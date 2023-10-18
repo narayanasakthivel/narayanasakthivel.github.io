@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import userapi from './songifyapi'
-import { setclienttoken } from './songifyapi';
+// import { setclienttoken } from './songifyapi';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-const Library = ({token,playlistimg,setPlaylistimg,playlistname,setplaylistname}) => {
+const Library = ({setPlaylistimg,setplaylistname}) => {
   const [playlist,setPlaylist]=useState([]);
   useEffect(()=>{
      userapi.get("me/playlists").then((response)=>{
@@ -25,7 +25,7 @@ const Library = ({token,playlistimg,setPlaylistimg,playlistname,setplaylistname}
           (
           <div className='lib-playlist' key={each.id} onClick={()=>gotoplaylist(each.id,each)}>
           <p>{each.name}</p>
-          <img src={each.images[0].url}></img>
+          <img alt='player'src={each.images[0].url}></img>
           </div>
           )
         ):(<></>)}

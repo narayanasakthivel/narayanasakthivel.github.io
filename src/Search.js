@@ -1,7 +1,7 @@
-import React, { useState,useEffect } from 'react'
-import {FaSearch} from 'react-icons/fa'
+import React, { useState} from 'react'
+// import {FaSearch} from 'react-icons/fa'
 import userapi from './songifyapi'
-const Search = ({tracks,setTracks,currentTrack,setCurrentTrack,curentIndex,setCurrentIndex,audio}) => {
+const Search = ({setTracks,setCurrentTrack,setCurrentIndex,audio}) => {
   // const [text,setText]=useState(null);
    const [searchitems,setsearchitems]=useState([]);
    const search=(text)=>{
@@ -30,12 +30,12 @@ const Search = ({tracks,setTracks,currentTrack,setCurrentTrack,curentIndex,setCu
   return (
     <div className='search'>
       <div className='search-field'>
-          <input autofocus placeholder="What do you want to listen to?" onChange={(e)=>search(e.target.value)}></input>
+          <input  placeholder="What do you want to listen to?" onChange={(e)=>search(e.target.value)}></input>
       </div>
       <div className='results'>
            {searchitems.length?
            (searchitems.map((each,index)=>(<div className='result-fields' key={index} onClick={()=>{onclickresults(index)}}>
-               <img src={each.album.images[0].url}></img>
+               <img alt ='player'src={each.album.images[0].url}></img>
                <p>{each.album.name}</p>
            </div>))):<></>}
       </div>

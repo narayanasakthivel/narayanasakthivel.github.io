@@ -212,7 +212,7 @@ nav{
    background: linear-gradient(180deg, rgba(18,17,17,1) 0%, rgba(255,0,9,1) 100%, rgba(159,151,151,1) 100%);
    display:flex;
    flex-flow: column;
-   justify-content: start;
+   justify-content: flex-start;
    align-items: center;
    
 
@@ -445,7 +445,7 @@ nav{
   display: flex;
   flex-flow: row;
   gap:20px;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
 }
 .result-fields p{

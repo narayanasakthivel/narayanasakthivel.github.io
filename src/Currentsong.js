@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import imagesong from './images/leafqt.jpg'
+
 import { useNavigate } from 'react-router-dom';
 import {FaPlay} from 'react-icons/fa'
 import { FaPause } from 'react-icons/fa';
-const Currentsong = ({currentTrack,setCurrentTrack,curentIndex,setCurrentIndex,tracks,setTracks,audio,isavailable,setAvailabel,percentdown,setPercentDown}) => {
+const Currentsong = ({currentTrack,setCurrentTrack,curentIndex,setCurrentIndex,tracks,audio,isavailable,percentdown,setPercentDown}) => {
   const navigate=useNavigate(); 
   const gotoplayer=()=>{
       navigate('/Player');
@@ -69,6 +69,8 @@ const Currentsong = ({currentTrack,setCurrentTrack,curentIndex,setCurrentIndex,t
    return ()=>{
       audio.current.removeEventListener('timeupdate',()=>{});
    }
+
+   // eslint-disable-next-line react-hooks/exhaustive-deps
  },[currentTrack])
  const onclickshortbtn=()=>{
   if(isavailable){
@@ -88,7 +90,7 @@ const Currentsong = ({currentTrack,setCurrentTrack,curentIndex,setCurrentIndex,t
     <div className='currentsong' >
         {/* {console.log(currentTrack)} */}
         {(currentTrack!==null)?(<div className="shortcut">
-        <img src={currentTrack.album.images[0].url} onClick={()=>{gotoplayer()}}></img>
+        <img alt='palyer'src={currentTrack.album.images[0].url} onClick={()=>{gotoplayer()}}></img>
         <p onClick={()=>{gotoplayer()}}>{currentTrack.album.name}</p>
         <div className='progress'>
           <div className="fills" style={{width:`${percentdown}%`}}>

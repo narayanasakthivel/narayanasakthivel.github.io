@@ -1,11 +1,11 @@
 import React from 'react'
 import {useLocation} from 'react-router-dom'
-import { useEffect,useState} from 'react';
+import { useEffect} from 'react';
 import userapi from './songifyapi'
-const Playlist = ({currentTrack,setCurrentTrack,curentIndex,setCurrentIndex,tracks,setTracks,audio,percentdown,setPercentDown,isplaying,setisplaying,isavailable,setAvailabel,playlistimg,setPlaylistimg,playlistname,setplaylistname,activesong,setactivesong}) => {
+const Playlist = ({currentTrack,setCurrentTrack,curentIndex,setCurrentIndex,tracks,setTracks,audio,isplaying,setisplaying,isavailable,setAvailabel,playlistimg,playlistname}) => {
   const location =useLocation();
-  const [distance,setdistance]=useState(0);
-  const [start,setStart]=useState(false);
+  // const [distance,setdistance]=useState(0);
+  // const [start,setStart]=useState(false);
   
 //   const resizeimage=()=>{
 //     setdistance(window.scrollY);
@@ -66,7 +66,7 @@ const Playlist = ({currentTrack,setCurrentTrack,curentIndex,setCurrentIndex,trac
        setAvailabel(true);
       }
     })
-  },[])
+  })
   const checkfornext=()=>{
     if(audio.current.currentTime===audio.current.duration){
       if(curentIndex===tracks.length-1){
@@ -87,6 +87,7 @@ const Playlist = ({currentTrack,setCurrentTrack,curentIndex,setCurrentIndex,trac
     return ()=>{
       audio.current.removeEventListener('timeupdate',()=>{});
     }
+   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[curentIndex])
 
 
@@ -104,7 +105,7 @@ const Playlist = ({currentTrack,setCurrentTrack,curentIndex,setCurrentIndex,trac
     <div className='playlist-container'>
       <div className='playlistnav'>
       <div className='playlistimg'>
-      <img className='playinimg' src={playlistimg} ></img>
+      <img className='playinimg' alt='player' src={playlistimg} ></img>
       </div>
        <div className='playlisttitle'>
        <h3>{playlistname}</h3>
@@ -116,7 +117,7 @@ const Playlist = ({currentTrack,setCurrentTrack,curentIndex,setCurrentIndex,trac
          
            (
            <div className={`eachsong ${curentIndex===index&&each.track===currentTrack?'activesong':''}`} key={index} onClick={()=>{onclickeachsong(index)}}>
-           <img src={each.track.album.images[0].url}></img>
+           <img alt='player'src={each.track.album.images[0].url}></img>
            <p>{each.track.name}</p>
            </div> )
        )):<><h1>Oops No songs found</h1></>}

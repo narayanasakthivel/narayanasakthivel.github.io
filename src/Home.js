@@ -2,8 +2,8 @@ import React from 'react'
 import userapi from './songifyapi'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-const Home = ({tracks,setTracks,currentTrack,setCurrentTrack,curentIndex,setCurrentIndex,audio}) => {
+
+const Home = ({setTracks,setCurrentTrack,setCurrentIndex,audio}) => {
   const [usertopitems,setusertopitems]=useState([]);
   const [recent,setrecent]=useState([]);
   const [latest,setLatest]=useState([]);
@@ -12,7 +12,7 @@ const Home = ({tracks,setTracks,currentTrack,setCurrentTrack,curentIndex,setCurr
   const [songs,setsongs]=useState([]);
   // const navigate=useNavigate();
   useEffect(()=>{
-    {userapi.get("me/player/recently-played").then(response=>{
+    userapi.get("me/player/recently-played").then(response=>{
       // console.log(response);
       const tempfilter=(response.data.items)
       // console.log(tempfilter);
@@ -50,7 +50,7 @@ const Home = ({tracks,setTracks,currentTrack,setCurrentTrack,curentIndex,setCurr
       setrecent(filtertrack);
       //  console.log(filtertrack);
     })}
-  },[])
+  ,[])
   //user top items
 
 
@@ -62,7 +62,7 @@ const Home = ({tracks,setTracks,currentTrack,setCurrentTrack,curentIndex,setCurr
       // const filtered=temp.filter(each=>(each.preview_url!==null));
       // console.log(filtered);
       setusertopitems(response.data.items);});
-    {}
+   
 
     userapi.get('search?q=a&type=track&include_external=audio').then(response=>{
       const temp=(response.data.tracks.items);
@@ -125,7 +125,7 @@ const Home = ({tracks,setTracks,currentTrack,setCurrentTrack,curentIndex,setCurr
       <div className='recentlyplayed'>
             {recent.map((each,index)=>(
               <div className='recentsong' key={index} onClick={()=>{onclicktopsongs(index,recent);console.log(recent)}}>
-                  <img src={`${each.track.album.images[0].url}`}></img>
+                  <img alt='player'src={`${each.track.album.images[0].url}`}></img>
                   <p>{each.track.album.name}</p>
               </div>
             ))
@@ -137,7 +137,7 @@ const Home = ({tracks,setTracks,currentTrack,setCurrentTrack,curentIndex,setCurr
             {/* {console.log(usertopitems)} */}
                {usertopitems.map((each,index)=>
                   (<div className='topsongs' key={index} onClick={()=>onclicktopsongs(index,usertopitems)}>
-                     <img src={`${each.album.images[0].url}`}></img>
+                     <img alt='player'src={`${each.album.images[0].url}`}></img>
                      <p >{each.album.name}</p>
                   </div>
                   ))
@@ -152,7 +152,7 @@ const Home = ({tracks,setTracks,currentTrack,setCurrentTrack,curentIndex,setCurr
             {console.log(latest)}
                {latest.map((each,index)=>
                   (<div className='topsongs' key={each.id} onClick={()=>{onclicktopsongs(index,latest)}}>
-                     <img src={`${each.album.images[0].url}`}></img>
+                     <img alt='player'src={`${each.album.images[0].url}`}></img>
                      <p >{each.album.name}</p>
                   </div>
                   ))
@@ -167,7 +167,7 @@ const Home = ({tracks,setTracks,currentTrack,setCurrentTrack,curentIndex,setCurr
             {console.log(latest)}
                {recom.map((each,index)=>
                   (<div className='topsongs' key={each.id} onClick={()=>{onclicktopsongs(index,recom)}}>
-                     <img src={`${each.album.images[0].url}`}></img>
+                     <img alt='player'src={`${each.album.images[0].url}`}></img>
                      <p >{each.album.name}</p>
                   </div>
                   ))
@@ -181,7 +181,7 @@ const Home = ({tracks,setTracks,currentTrack,setCurrentTrack,curentIndex,setCurr
             {console.log(latest)}
                {pick.map((each,index)=>
                   (<div className='topsongs' key={each.id} onClick={()=>{onclicktopsongs(index,pick)}}>
-                     <img src={`${each.album.images[0].url}`}></img>
+                     <img alt='player'src={`${each.album.images[0].url}`}></img>
                      <p >{each.album.name}</p>
                   </div>
                   ))
@@ -195,7 +195,7 @@ const Home = ({tracks,setTracks,currentTrack,setCurrentTrack,curentIndex,setCurr
             {console.log(latest)}
                {songs.map((each,index)=>
                   (<div className='songsatbottom' key={each.id} onClick={()=>{onclicktopsongs(index,songs)}}>
-                     <img src={`${each.album.images[0].url}`}></img>
+                     <img alt='player'src={`${each.album.images[0].url}`}></img>
                      <p >{each.album.name}</p>
                   </div>
                   ))

@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import {Routes,Route} from 'react-router-dom'
 import {setclienttoken} from './songifyapi'
@@ -12,13 +12,12 @@ import Profile from './Profile';
 import  Playlist  from './Playlist';
 import Currentsong from './Currentsong';
 import Player from './Player';
-import { useNavigate } from 'react-router-dom';
 function App() {
   const clientid="a64099c5dcc94501a3d7c89d196363a3";
   const redirect="http://localhost:3000";
   const auth="https://accounts.spotify.com/authorize";
   const scopes=["user-read-private","user-read-email","user-read-recently-played","user-top-read","playlist-read-private","user-follow-read"];
-  const navigate=useNavigate();
+   
   const [token,setToken]=useState('');
   const [currentTrack,setCurrentTrack]=useState();
   const [curentIndex,setCurrentIndex]=useState(-1);

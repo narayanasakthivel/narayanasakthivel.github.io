@@ -1,18 +1,18 @@
 import React from 'react'
-import { useState,useEffect,useRef } from 'react';
+import { useState,useEffect} from 'react';
 import { FaPlay } from "react-icons/fa";
 import {BiSkipNext} from "react-icons/bi"
 import {BiSkipPrevious} from 'react-icons/bi'
 import {FaPause} from 'react-icons/fa'
 import {FaChevronDown} from 'react-icons/fa6'
 import {BiDotsVerticalRounded} from 'react-icons/bi'
-const Player = ({currentTrack,setCurrentTrack,curentIndex,setCurrentIndex,tracks,setTracks,audio,isplaying,setisplaying,activesong,setactivesong}) => {
+const Player = ({currentTrack,setCurrentTrack,curentIndex,setCurrentIndex,tracks,audio,setisplaying}) => {
     const [percentage,setPercentage]=useState(0);
     const [position,setPosition]=useState(0);
     const [margin,setMargin]=useState(0);
     const [current,setCurrent]=useState("0.00")
     const [songduration,setsongduration]=useState("0.00")
-    const [start,setstart]=useState(false)
+    // const [start,setstart]=useState(false)
     //const audio= useRef(new Audio(currentTrack.preview_url))
     audio.current.volume=1;
     const nextsong=()=>{
@@ -90,6 +90,7 @@ const Player = ({currentTrack,setCurrentTrack,curentIndex,setCurrentIndex,tracks
        return ()=>{
           audio.current.removeEventListener('timeupdate',updatepercentage)
        }
+       // eslint-disable-next-line react-hooks/exhaustive-deps
     },[percentage])
     const updatepercentage=()=>{
       setPercentage((audio.current.currentTime.toFixed(2)/audio.current.duration.toFixed(2))*100);
@@ -179,7 +180,7 @@ const Player = ({currentTrack,setCurrentTrack,curentIndex,setCurrentIndex,tracks
         (<><div className="forblur"style={{backgroundImage:`url(${currentTrack.album.images[0].url})`}}></div><div className='playeralign'><div className='playelements'>
         {/* <img className="forblur"src={currentTrack.album.images[0].url}></img> */}
         <div class="playernav"><FaChevronDown/><h3>PLAYING FROM PLAYLIST</h3><BiDotsVerticalRounded/></div>
-        <img className="playerimg"src={currentTrack.album.images[0].url}></img>
+        <img className="playerimg"src={currentTrack.album.images[0].url} alt='player'></img>
         <div className='songflow'>
         <div className='artist'>
         <div className='songname'>

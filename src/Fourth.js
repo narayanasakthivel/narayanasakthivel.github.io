@@ -19,7 +19,7 @@ const Fourth = () => {
     <>
     {user&&following?
     <div className='profilef'>{console.log(user)}
-      <img src={user.data.images[0].url}></img>
+      <img alt="player"src={user.data.images[0].url}></img>
       <div className='usedetails'>
            <h1>{user.data.display_name}</h1>
            <div className='follow'>
