@@ -120,15 +120,29 @@ const Home = ({setTracks,setCurrentTrack,setCurrentIndex,audio}) => {
   // const onclickeachplaylist=(id)=>{
   //   navigate(`/Playlist/${id}`,{state:{id:id}});
   // }
+
+  const initsafe=()=>{
+    const arr=[];
+    for(let i=0;i<6;i++){
+       arr.push(latest[i]);
+    }
+    return arr;
+  }
   return (
     <div className='home'>
       <div className='recentlyplayed'>
-            {recent.map((each,index)=>(
+            {recent.length!==0?recent.map((each,index)=>(
+              <div className='recentsong' key={index} onClick={()=>{onclicktopsongs(index,recent);console.log(recent)}}>
+                  <img alt='player'src={`${each.track.album.images[0].url}`}></img>
+                  <p>{each.track.album.name}</p>
+              </div>
+            )):(initsafe().map((each,index)=>(
               <div className='recentsong' key={index} onClick={()=>{onclicktopsongs(index,recent);console.log(recent)}}>
                   <img alt='player'src={`${each.track.album.images[0].url}`}></img>
                   <p>{each.track.album.name}</p>
               </div>
             ))
+            )
             }
       </div>
       <div className='topitems'>
