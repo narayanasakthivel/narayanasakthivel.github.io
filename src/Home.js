@@ -138,8 +138,8 @@ const Home = ({setTracks,setCurrentTrack,setCurrentIndex,audio}) => {
               </div>
             )):(initsafe().map((each,index)=>(
               <div className='recentsong' key={index} onClick={()=>{onclicktopsongs(index,recent);console.log(recent)}}>
-                  <img alt='player'src={`${each.track.album.images[0].url}`}></img>
-                  <p>{each.track.album.name}</p>
+                  <img alt='player'src={`${each.album.images[0].url}`}></img>
+                  <p>{each.album.name}</p>
               </div>
             ))
             )
