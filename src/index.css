@@ -549,6 +549,9 @@ nav{
   color:black;
 }
 .safe{
+  display:flex;
+  justify-content: center;
+  align-items: center;
   width:90px;
   aspect-ratio: 1;
   border-radius: 55px;
