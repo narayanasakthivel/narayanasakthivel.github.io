@@ -16,7 +16,7 @@ const Profile = ({token}) => {
      })
 },[token])
   return (
-    image?(<img className="profile"  alt='profile'src={image}></img>):<div className='profile'>{name}</div>
+    image?(<img className="profile"  alt='profile'src={image}></img>):<div className='profile'><p>{name}</p></div>
   
   )
 }
