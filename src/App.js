@@ -14,7 +14,7 @@ import Currentsong from './Currentsong';
 import Player from './Player';
 function App() {
   const clientid="a64099c5dcc94501a3d7c89d196363a3";
-  const redirect="http://localhost:3000";
+  const redirect="https://melodic-donut-5152aa.netlify.app";
   const auth="https://accounts.spotify.com/authorize";
   const scopes=["user-read-private","user-read-email","user-read-recently-played","user-top-read","playlist-read-private","user-follow-read"];
    
