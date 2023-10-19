@@ -14,6 +14,7 @@ import Currentsong from './Currentsong';
 import Player from './Player';
 function App() {
   const clientid="a64099c5dcc94501a3d7c89d196363a3";
+  const clientsecret="6a8550cc59724317905f93f55eb652e9";
   const redirect="http://melodic-donut-5152aa.netlify.app";
   const auth="https://accounts.spotify.com/authorize";
   const scopes=["user-read-private","user-read-email","user-read-recently-played","user-top-read","playlist-read-private","user-follow-read"];
@@ -51,7 +52,7 @@ function App() {
     <div className="App">
       <header className="App-header">
       {(!token)?
-      (<div className="login"><a href={`${auth}?client_id=${clientid}&redirect_uri=${redirect}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true` }>Login</a></div>):
+      (<div className="login"><a href={`${auth}?client_id=${clientid}&client_secret=${clientsecret}&redirect_uri=${redirect}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true` }>Login</a></div>):
       (
       <>
       <Profile token={token}/>
