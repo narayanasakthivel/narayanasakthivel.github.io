@@ -552,4 +552,6 @@ nav{
   width:90px;
   aspect-ratio: 1;
   border-radius: 55px;
+  background-color:red;
+  color:white;
 }
