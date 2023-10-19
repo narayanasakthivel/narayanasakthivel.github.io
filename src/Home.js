@@ -13,13 +13,13 @@ const Home = ({setTracks,setCurrentTrack,setCurrentIndex,audio}) => {
   // const navigate=useNavigate();
   useEffect(()=>{
     userapi.get("me/player/recently-played").then(response=>{
-      // console.log(response);
+       console.log(response);
       const tempfilter=(response.data.items)
-      // console.log(tempfilter);
+       console.log(tempfilter);
       const temp=tempfilter.filter((item)=>
         item.track.preview_url!==null
       );
-    //  / console.log(temp);
+        console.log(temp);
       const filtertrack =[];
       let count=0;
       while(filtertrack.length!==6){
@@ -29,7 +29,7 @@ const Home = ({setTracks,setCurrentTrack,setCurrentIndex,audio}) => {
          else{
           let sign=0
            for(let i=0;i<filtertrack.length;i++){
-            // console.log(temp);
+             // console.log(temp);
                if(filtertrack[i].track.preview_url===temp[count].track.preview_url){
                 sign=1;
                 break;
@@ -48,7 +48,7 @@ const Home = ({setTracks,setCurrentTrack,setCurrentIndex,audio}) => {
          count++;
       }
       setrecent(filtertrack);
-      //  console.log(filtertrack);
+        console.log(filtertrack);
     })}
   ,[])
   //user top items
