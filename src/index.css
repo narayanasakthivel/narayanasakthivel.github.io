@@ -548,3 +548,8 @@ nav{
   background-color: white;
   color:black;
 }
+.safe{
+  width:90px;
+  aspect-ratio: 1;
+  border-radius: 55px;
+}
