@@ -132,10 +132,11 @@ const Home = ({setTracks,setCurrentTrack,setCurrentIndex,audio}) => {
     <div className='home'>
       <div className='recentlyplayed'>
             {recent.length!==0?recent.map((each,index)=>(
+              (each!==undefined)?
               <div className='recentsong' key={index} onClick={()=>{onclicktopsongs(index,recent);console.log(recent)}}>
                   <img alt='player'src={`${each.track.album.images[0].url}`}></img>
                   <p>{each.track.album.name}</p>
-              </div>
+              </div>:<></>
             )):(initsafe().map((each,index)=>(
               (each!==undefined)?
               <div className='recentsong' key={index} onClick={()=>{onclicktopsongs(index,recent);console.log(recent)}}>
