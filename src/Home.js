@@ -10,6 +10,7 @@ const Home = ({setTracks,setCurrentTrack,setCurrentIndex,audio}) => {
   const [recom,setrecom]=useState([]);
   const[pick,setpick]=useState([]);
   const [songs,setsongs]=useState([]);
+  const [safe,setsafe]=useState([]);
   // const navigate=useNavigate();
   useEffect(()=>{
     userapi.get("me/player/recently-played").then(response=>{
@@ -68,6 +69,11 @@ const Home = ({setTracks,setCurrentTrack,setCurrentIndex,audio}) => {
       const temp=(response.data.tracks.items);
       const filtered=temp.filter(each=>(each.preview_url!==null));
       console.log(filtered);
+      const arr=[];
+      for(let i=0;i<6;i++){
+         arr.push(filtered[i]);
+      }
+      setsafe(arr);
       setLatest(filtered);
     });
 
@@ -121,25 +127,19 @@ const Home = ({setTracks,setCurrentTrack,setCurrentIndex,audio}) => {
   //   navigate(`/Playlist/${id}`,{state:{id:id}});
   // }
 
-  const initsafe=()=>{
-    const arr=[];
-    for(let i=0;i<6;i++){
-       arr.push(latest[i]);
-    }
-    return arr;
-  }
+ 
   return (
     <div className='home'>
-      <div className='recentlyplayed'>
-            {recent.length!==0?recent.map((each,index)=>(
+       <div className='recentlyplayed'>
+            {recent.length!==0&&recent[0]!==undefined&&recent.length===6?recent.map((each,index)=>(
               (each!==undefined)?
               <div className='recentsong' key={index} onClick={()=>{onclicktopsongs(index,recent);console.log(recent)}}>
                   <img alt='player'src={`${each.track.album.images[0].url}`}></img>
                   <p>{each.track.album.name}</p>
               </div>:<></>
-            )):(initsafe().map((each,index)=>(
+            )):(safe.map((each,index)=>(
               (each!==undefined)?
-              <div className='recentsong' key={index} onClick={()=>{onclicktopsongs(index,recent);console.log(recent)}}>
+              <div className='recentsong' key={index} onClick={()=>{onclicktopsongs(index,safe);console.log(safe)}}>
                   <img alt='player'src={`${each.album.images[0].url}`}></img>
                   <p>{each.album.name}</p>
               </div>:<></>
